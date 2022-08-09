@@ -6,7 +6,7 @@
  * **/
 
 // Node js module to get an input from console
-const prompt = require('prompt-sync')()
+// const prompt = require('prompt-sync')()
 
 /**
  * @description Class representing a a user
@@ -268,7 +268,7 @@ console.log(users.getUsers())
 
 console.log('')
 console.log('Test getUserByName("italijancic") method of Users Class')
-console.log('------------------------------------------')
+console.log('------------------------------------------------------')
 console.log(users.getUserByName('italijancic'))
 
 // Add devices to users objects
@@ -297,7 +297,3 @@ console.log(devices.addDevice(new Device('T700', '08:3a:f2:49:8d:7c', 'Sensor de
 console.log(users.getUserByName('espesot').getDevices())
 console.log(users.getUserByName('espesot').getDeviceById('8c:4b:14:10:a0:40'))
 console.log(users.getUserByName('italijancic').addDevice(new Device('T700', '08:3a:f2:49:8d:7c', 'Sensor de Temperatura', 'Oficina dyt')))
-
-// console.log(users.getUserByEmail('italijancic@gmail.com'))
-// console.log(users.getUsers())
-// console.log(users.deleteUserByUsername('italijancic'))
