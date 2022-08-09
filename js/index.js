@@ -58,6 +58,7 @@ class User {
             return this.devices
         } else {
             console.error('This user has not devices!')
+            return undefined
         }
     }
 
@@ -69,9 +70,11 @@ class User {
                 return foundDevice
             } else {
                 console.error('Device ID does not exist on devices list')
+                return undefined
             }
         } else {
             console.error('This user has not devices!')
+            return undefined
         }
     }
 
@@ -81,11 +84,21 @@ class User {
             this.devices.push(newDevice)
         } else {
             console.error('Device ID alreadey exist on this user devices list')
+            return undefined
         }
     }
 
     addDevices(newDevices) {
         newDevices.forEach((newDevice) => this.addDevice(newDevice))
+    }
+
+    deleteDeviceById(id) {
+        const newDeviceList = this.devices.filter((device) => {
+            return device.id != id
+        })
+
+        this.devices = newDeviceList
+        return this.devices
     }
 }
 
@@ -119,7 +132,8 @@ class Users {
         if (foundUser != undefined) {
             return foundUser
         } else {
-            console.error('Incorrect or missing username')
+           console.error('Incorrect or missing username')
+            return undefined
         }
     }
 
@@ -132,6 +146,7 @@ class Users {
             return foundUser
         } else {
             console.error('Incorrect or missing email')
+            return undefined
         }
     }
 
@@ -186,7 +201,8 @@ class Devices {
         if (this.devices.length != 0) {
             return this.devices
         } else {
-            return console.log('Devices list is empty')
+            console.log('Devices list is empty')
+            return undefined
         }
     }
 
@@ -198,7 +214,8 @@ class Devices {
         if (foundDevice !== undefined) {
             return foundDevice
         } else {
-            return console.error('Incorrect or missing device ID')
+            console.error('Incorrect or missing device ID')
+            return undefined
         }
     }
 
@@ -212,10 +229,12 @@ class Devices {
             if (foundDevice === undefined) {
                 this.devices.push(newDevice)
             } else {
-                return console.error('Device ID already exist')
+                console.error('Device ID already exist')
+                return undefined
             }
         } else {
-            return console.error('Missing device ID. Device ID must be unique and not null')
+            console.error('Missing device ID. Device ID must be unique and not null')
+            return undefined
         }
     }
 }
@@ -264,8 +283,21 @@ console.log('Test result of addDevice() User class method')
 console.log('-------------------------------------------')
 console.log(users.getUsers())
 
-// console.log(users.getUserByName('italijancic').getDevices())
-// console.log(users.getUserByName('cdomenje'))
+console.log('')
+console.log('Test result of deleteDeviceById() User class method')
+console.log('---------------------------------------------------')
+users.getUserByName('italijancic').deleteDeviceById('8c:4b:14:0e:7f:58')
+console.log(users.getUserByName('italijancic').getDevices())
+
+console.log('')
+console.log('Check errors handlers')
+console.log('---------------------')
+console.log(devices.getDeviceById('08:3a:f2:49:24:24'))
+console.log(devices.addDevice(new Device('T700', '08:3a:f2:49:8d:7c', 'Sensor de Temperatura', 'Oficina dyt')))
+console.log(users.getUserByName('espesot').getDevices())
+console.log(users.getUserByName('espesot').getDeviceById('8c:4b:14:10:a0:40'))
+console.log(users.getUserByName('italijancic').addDevice(new Device('T700', '08:3a:f2:49:8d:7c', 'Sensor de Temperatura', 'Oficina dyt')))
+
 // console.log(users.getUserByEmail('italijancic@gmail.com'))
 // console.log(users.getUsers())
 // console.log(users.deleteUserByUsername('italijancic'))
