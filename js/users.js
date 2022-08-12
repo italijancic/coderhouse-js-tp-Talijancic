@@ -24,10 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			"username": event.target[0].value,
 			"email": event.target[1].value,
 			"password": event.target[2].value,
-			"devices": []
+			"devices": [],
+			"creationDate": new Date().toLocaleString()
 		}
 
-		users.addUser(new User(newUser.username, newUser.email, newUser.password, []))
+		users.addUser(new User(newUser.username, newUser.email, newUser.password, [], newUser.creationDate))
 
 		// Clear form
 		document.querySelector('#username-text-input').value = ''

@@ -13,12 +13,12 @@ import { devices } from "./devicesServices.js"
      * @param {array}	devices Array of devices objets
      *
      * **/
-    constructor(username, email, password, devices) {
+    constructor(username, email, password, devices, date) {
         this.username = username
         this.email = email
         this.password = password
         this.devices = devices
-        this.creationDate = new Date()
+        this.creationDate = date
     }
 
     getUsername() {
@@ -159,13 +159,15 @@ const users = new Users([])
 
 if (sessionStorage.getItem('users') !== null) {
 	const storageUsers = JSON.parse(sessionStorage.getItem('users')).users
+	console.log(storageUsers)
 	storageUsers.forEach((user) => {
-		users.addUser(new User(user.username, user.email, user.password, []))
+		users.addUser(new User(user.username, user.email, user.password, [], user.creationDate))
 	})
 } else {
-	users.addUser(new User('italijancic', 'italijancic@gmail.com', '12345678', []))
-	users.addUser(new User('cdomenje', 'cdomenje@dytsoluciones.com.ar', '12345678', []))
-	users.addUser(new User('espesot', 'espesot@dytsoluciones.com.ar', '12345678', []))
+	console.log('[usersServices]: not load from local storage!')
+	users.addUser(new User('italijancic', 'italijancic@gmail.com', '12345678', [], new Date().toLocaleString()))
+	users.addUser(new User('cdomenje', 'cdomenje@dytsoluciones.com.ar', '12345678', [], new Date().toLocaleString()))
+	users.addUser(new User('espesot', 'espesot@dytsoluciones.com.ar', '12345678', [], new Date().toLocaleString()))
 	sessionStorage.setItem('users', JSON.stringify(users))
 }
 
@@ -190,7 +192,7 @@ const renderUsersList = (users) => {
 		<td>${user.email}</td>
 		<td>${user.password}</td>
 		<td>${user.devices.length}</td>
-		<td>${new Date().toLocaleString()}</td>
+		<td>${user.creationDate}</td>
 	</tr>`
 	})
 
