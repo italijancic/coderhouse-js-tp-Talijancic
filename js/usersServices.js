@@ -165,9 +165,9 @@ if (sessionStorage.getItem('users') !== null) {
 	})
 } else {
 	console.log('[usersServices]: not load from local storage!')
-	users.addUser(new User('italijancic', 'italijancic@gmail.com', '12345678', [], new Date().toLocaleString()))
-	users.addUser(new User('cdomenje', 'cdomenje@dytsoluciones.com.ar', '12345678', [], new Date().toLocaleString()))
-	users.addUser(new User('espesot', 'espesot@dytsoluciones.com.ar', '12345678', [], new Date().toLocaleString()))
+	users.addUser(new User('italijancic', 'italijancic@gmail.com', 'kjs$kl&sd#jf%', [], new Date().toLocaleString()))
+	users.addUser(new User('cdomenje', 'cdomenje@dytsoluciones.com.ar', '#%678&8*3$', [], new Date().toLocaleString()))
+	users.addUser(new User('espesot', 'espesot@dytsoluciones.com.ar', 'l5k%gm7dlk#$', [], new Date().toLocaleString()))
 	sessionStorage.setItem('users', JSON.stringify(users))
 }
 
