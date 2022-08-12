@@ -1,7 +1,9 @@
+import { devices } from "./devicesServices.js"
+
 /**
  * @description Class representing a a user
  * **/
-class User {
+ class User {
 
     /**
      * Create a user object
@@ -151,4 +153,48 @@ class Users {
 
 }
 
-export { User, Users }
+// Create users
+const users = new Users([])
+// Get data from sesion store
+
+if (sessionStorage.getItem('users') !== null) {
+	const storageUsers = JSON.parse(sessionStorage.getItem('users')).users
+	storageUsers.forEach((user) => {
+		users.addUser(new User(user.username, user.email, user.password, []))
+	})
+} else {
+	users.addUser(new User('italijancic', 'italijancic@gmail.com', '12345678', []))
+	users.addUser(new User('cdomenje', 'cdomenje@dytsoluciones.com.ar', '12345678', []))
+	users.addUser(new User('espesot', 'espesot@dytsoluciones.com.ar', '12345678', []))
+	sessionStorage.setItem('users', JSON.stringify(users))
+}
+
+// Add devices to users objects
+users.getUserByName('italijancic').addDevice(devices.getDeviceById('08:3a:f2:49:8d:7c'))
+users.getUserByName('italijancic').addDevice(devices.getDeviceById('8c:4b:14:0e:7f:58'))
+users.getUserByName('cdomenje').addDevice(devices.getDeviceById('8c:4b:14:0e:7f:58'))
+users.getUserByName('cdomenje').addDevice(devices.getDeviceById('cc:50:e3:82:f0:6a'))
+users.getUserByName('cdomenje').addDevice(devices.getDeviceById('8c:4b:14:10:a0:40'))
+
+
+const renderUsersList = (users) => {
+
+	// Render users list
+	let usersRowData = ''
+
+	users.forEach((user, index) => {
+		usersRowData += `
+	<tr>
+		<th scope="row">${index + 1}</th>
+		<td>${user.username}</td>
+		<td>${user.email}</td>
+		<td>${user.password}</td>
+		<td>${user.devices.length}</td>
+		<td>${new Date().toLocaleString()}</td>
+	</tr>`
+	})
+
+	document.querySelector('#users-data').innerHTML = usersRowData
+}
+
+export { User, Users, users, renderUsersList }
