@@ -1,4 +1,5 @@
-import { Device, Devices, devices, renderDevicesList } from "./devicesServices.js";
+import { Device } from './devices.models.js';
+import { devices, renderDevicesList } from './devices.services.js'
 
 
 document.addEventListener('DOMContentLoaded', () => {

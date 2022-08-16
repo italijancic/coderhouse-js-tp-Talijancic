@@ -1,4 +1,5 @@
-import { User, Users, users, renderUsersList } from "./usersServices.js";
+import { User } from './users.models.js'
+import { users, renderUsersList } from './users.services.js';
 
 
 document.addEventListener('DOMContentLoaded', () => {
