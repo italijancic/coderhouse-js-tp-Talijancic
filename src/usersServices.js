@@ -112,8 +112,21 @@ class Users {
         return this.users
     }
 
-    addUser(user) {
-        this.users.push(user)
+    addUser(newUser) {
+		// Check not null user fields
+		if( newUser.username !== '' ) {
+			// Check not repeat username
+			const foundUser = this.users.find((user) => {
+				return user.username === newUser.username
+			})
+			if ( foundUser === undefined ) {
+				this.users.push(newUser)
+			} else {
+				alert('Username already exist!')
+				console.error('Username already exist')
+				return undefined
+			}
+		}
     }
 
     getUserByName(username) {
