@@ -155,8 +155,8 @@ class Users {
 
 // Create users
 const users = new Users([])
-// Get data from sesion store
 
+// Get data from sesion store
 if (sessionStorage.getItem('users') !== null) {
 	const storageUsers = JSON.parse(sessionStorage.getItem('users')).users
 	console.log(storageUsers)

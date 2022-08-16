@@ -1,3 +1,24 @@
+/**
+ * @description Class to represent a device
+ * **/
+class Device {
+
+    /**
+     * Create a device object
+     * @param {string} model 	string to identificate device model
+     * @param {string} id		string unique for any device
+     * @param {string} name		descriptive name for device, asing by user
+     * @param {string} location	string to indicate device location
+     *
+     * **/
+    constructor(model, id, name, location, date) {
+        this.model = model
+        this.id = id
+        this.name = name
+        this.location = location
+        this.creationDate = date
+    }
+}
 
 /**
  * @description Class to represent a set of devices
@@ -45,6 +66,7 @@
             if (foundDevice === undefined) {
                 this.devices.push(newDevice)
             } else {
+				alert('Device ID already exist')
                 console.error('Device ID already exist')
                 return undefined
             }
@@ -55,28 +77,7 @@
     }
 }
 
-/**
- * @description Class to represent a device
- * **/
-class Device {
-
-    /**
-     * Create a device object
-     * @param {string} model 	string to identificate device model
-     * @param {string} id		string unique for any device
-     * @param {string} name		descriptive name for device, asing by user
-     * @param {string} location	string to indicate device location
-     *
-     * **/
-    constructor(model, id, name, location, date) {
-        this.model = model
-        this.id = id
-        this.name = name
-        this.location = location
-        this.creationDate = date
-    }
-}
-
+// Create devices data set
 const devices = new Devices([])
 
 if (sessionStorage.getItem('devices') !== null) {
@@ -111,6 +112,5 @@ const renderDevicesList = (devices) => {
 
 	document.querySelector('#devices-data').innerHTML = deviceRowData
 }
-
 
 export { Device, Devices, devices, renderDevicesList }

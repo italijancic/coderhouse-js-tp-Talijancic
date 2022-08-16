@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		event.preventDefault()
 
-		console.log(event.target)
 		// Create new Device class instance
 		const newDevice = {
 			"model": event.target[0][event.target[0].selectedIndex].text,
@@ -19,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			"location": event.target[3].value,
 			"creationDate": new Date().toLocaleString()
 		}
-
-		console.log(newDevice)
 
 		devices.addDevice(new Device(newDevice.model, newDevice.id, newDevice.name, newDevice.location, newDevice.creationDate))
 
