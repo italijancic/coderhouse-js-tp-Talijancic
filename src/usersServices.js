@@ -159,7 +159,6 @@ const users = new Users([])
 // Get data from sesion store
 if (sessionStorage.getItem('users') !== null) {
 	const storageUsers = JSON.parse(sessionStorage.getItem('users')).users
-	console.log(storageUsers)
 	storageUsers.forEach((user) => {
 		users.addUser(new User(user.username, user.email, user.password, [], user.creationDate))
 	})
