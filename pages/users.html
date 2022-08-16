@@ -6,13 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>TP Talijancic</title>
-	<link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
 
 	<!-- Bootstrap .css -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 	<!-- My .css -->
-	<link rel="stylesheet" href="./css/styles.css">
+	<link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="#">
-					<img src="./img/LogoNegro.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
+					<img src="../img/LogoNegro.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
 				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
 					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,13 +30,13 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+							<a class="nav-link" href="../index.html">Dashboard</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="./pages/users.html">Users</a>
+							<a class="nav-link active" aria-current="page" class="nav-item" href="#">Users</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="./pages/devices.html">Devices</a>
+							<a class="nav-link" href="./devices.html">Devices</a>
 						</li>
 					</ul>
 				</div>
@@ -46,6 +46,34 @@
 
 	<!-- Main -->
 	<main>
+
+		<!-- New User Form -->
+		<div class="container mt-5">
+			<div class="col-lg-6 bg-light ps-3 pe-3 pt-2 pb-2 shadow">
+				<h2 class="display-5">New user</h2>
+				<form id="new-user-form" action="" method="post">
+					<div class="form-group mb-3">
+						<label for="username-text-input">Username</label>
+						<input id="username-text-input" name="username" type="text" class="form-control" placeholder="John Doe">
+					</div>
+					<div class="form-group mb-3">
+						<label for="email-text-input">Email</label>
+						<input id="email-text-input" name="email" type="email" class="form-control" placeholder="jdoe@email.com">
+					</div>
+					<div class="form-group mb-2">
+						<label for="password-text-input">Password</label>
+						<input id="password-text-input" name="password" type="password" class="form-control">
+					</div>
+					<div class="form-group">
+						<input class="form-check-input" type="checkbox" value="" id="showPassword">
+						<label class="form-check-label" for="showPassword">Show password</label>
+					</div>
+					<div class="form-group mb-2 text-end">
+						<button type="submit" id="btnAddUser" class="btn btn-primary btn-lg">Add User</button>
+					</div>
+				</form>
+			</div>
+		</div>
 
 		<!-- Users table -->
 		<div class="container mt-5">
@@ -67,25 +95,6 @@
 			</table>
 		</div>
 
-		<!-- Devices table -->
-		<div class="container mt-5">
-			<h2 class="display-4">Devices</h2>
-			<table class="table table-success table-hover shadow">
-				<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">model</th>
-						<th scope="col">id</th>
-						<th scope="col">name</th>
-						<th scope="col">location</th>
-						<th scope="col">created</th>
-					</tr>
-				</thead>
-				<tbody id="devices-data">
-					<!-- Dynamic data here! -->
-				</tbody>
-			</table>
-		</div>
 	</main>
 
 	<!-- Footer -->
@@ -96,7 +105,7 @@
 
 	</footer>
 
-	<script src="./src/index.js" type="module"></script>
+	<script src="../src/users.js" type="module"></script>
 
 	<!-- Bootstrap .js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
