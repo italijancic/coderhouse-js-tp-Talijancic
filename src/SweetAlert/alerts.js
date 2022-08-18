@@ -1,4 +1,3 @@
-
 /**
 * @brief function to print success msg over alert
 * @param {string} msg msg to print on alert
@@ -19,7 +18,7 @@ export const successAlert = (msg) => {
 export const errorAlert = (msg) => {
 	Swal.fire({
 		icon: 'error',
-		title: 'Oops...',
+		title: 'Error',
 		text: msg
 	})
 }
