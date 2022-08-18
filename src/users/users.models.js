@@ -119,10 +119,10 @@ class Users {
 			})
 			if ( foundUser === undefined ) {
 				this.users.push(newUser)
+                return true
 			} else {
-				alert('Username already exist!')
 				console.error('Username already exist')
-				return undefined
+				return false
 			}
 		}
     }

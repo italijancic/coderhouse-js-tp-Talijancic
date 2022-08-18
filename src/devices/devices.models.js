@@ -65,10 +65,10 @@ class Device {
             })
             if (foundDevice === undefined) {
                 this.devices.push(newDevice)
+                return true
             } else {
-				alert('Device ID already exist')
                 console.error('Device ID already exist')
-                return undefined
+                return false
             }
         } else {
             console.error('Missing device ID. Device ID must be unique and not null')
