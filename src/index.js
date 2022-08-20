@@ -5,8 +5,8 @@
  *	Create at: 09/08/2022 - 19:45hs
  * **/
 
-import { users, renderUsersList } from "./usersServices.js"
-import { devices, renderDevicesList  } from "./devicesServices.js"
+import { users, renderUsersList } from './users/users.services.js'
+import { devices, renderDevicesList  } from './devices/devices.services.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -16,4 +16,3 @@ document.addEventListener('DOMContentLoaded', () => {
 	renderDevicesList(devices.getDevices())
 
 })
-
