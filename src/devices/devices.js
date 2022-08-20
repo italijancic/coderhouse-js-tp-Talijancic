@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			"creationDate": new Date().toLocaleString()
 		}
 
+		// Validate empty fields
 		if (newDevice.model && newDevice.id && newDevice.name && newDevice.location) {
 
 			const result = devices.addDevice(new Device(newDevice.model, newDevice.id, newDevice.name, newDevice.location, newDevice.creationDate))
@@ -30,15 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
 				renderDevicesList(devices.getDevices())
 				// Save new data on session storage
 				sessionStorage.setItem('devices', JSON.stringify(devices))
+				// Clear form
+				document.querySelector('#device-model')[0].selected = 'selected'
+				document.querySelector('#device-id-text-input').value = ''
+				document.querySelector('#device-name-text-input').value = ''
+				document.querySelector('#device-location-text-input').value = ''
 			} else {
 				errorAlert('Device ID already exist')
 			}
-
-			// Clear form
-			document.querySelector('#device-model')[0].selected = 'selected'
-			document.querySelector('#device-id-text-input').value = ''
-			document.querySelector('#device-name-text-input').value = ''
-			document.querySelector('#device-location-text-input').value = ''
 		} else {
 			errorAlert('All data fields are required!')
 		}

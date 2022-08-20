@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			"creationDate": new Date().toLocaleString()
 		}
 
+		// Validate empty fields
 		if (newUser.username && newUser.email && newUser.password) {
 			const result = users.addUser(new User(newUser.username, newUser.email, newUser.password, [], newUser.creationDate))
 
@@ -39,14 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
 				renderUsersList(users.getUsers())
 				// Save new data on session storage
 				sessionStorage.setItem('users', JSON.stringify(users))
+				// Clear form
+				document.querySelector('#username-text-input').value = ''
+				document.querySelector('#email-text-input').value = ''
+				document.querySelector('#password-text-input').value = ''
 			} else {
-				errorAlert('Username already exist!')
+				errorAlert('Username or Email already exist!')
 			}
-
-			// Clear form
-			document.querySelector('#username-text-input').value = ''
-			document.querySelector('#email-text-input').value = ''
-			document.querySelector('#password-text-input').value = ''
 		} else {
 			errorAlert('All data fields are required!')
 		}
