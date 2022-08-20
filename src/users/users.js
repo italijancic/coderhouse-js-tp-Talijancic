@@ -1,5 +1,6 @@
-import { User, Users, users, renderUsersList } from "./usersServices.js";
-
+import { User } from './users.models.js'
+import { users, renderUsersList } from './users.services.js';
+import { errorAlert, successAlert } from '../SweetAlert/alerts.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -28,18 +29,24 @@ document.addEventListener('DOMContentLoaded', () => {
 			"creationDate": new Date().toLocaleString()
 		}
 
-		users.addUser(new User(newUser.username, newUser.email, newUser.password, [], newUser.creationDate))
+		const result = users.addUser(new User(newUser.username, newUser.email, newUser.password, [], newUser.creationDate))
+
+		if (result) {
+			// Sweetalert2 OK msg
+			successAlert('User added to users list!')
+			// Render new users list
+			renderUsersList(users.getUsers())
+			// Save new data on session storage
+			sessionStorage.setItem('users', JSON.stringify(users))
+		} else {
+			errorAlert('Username already exist!')
+		}
 
 		// Clear form
 		document.querySelector('#username-text-input').value = ''
 		document.querySelector('#email-text-input').value = ''
 		document.querySelector('#password-text-input').value = ''
 
-		// Render new users list
-		renderUsersList(users.getUsers())
-
-		// Save new data on session storage
-		sessionStorage.setItem('users', JSON.stringify(users))
 	})
 
 })
