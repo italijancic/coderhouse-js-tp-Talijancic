@@ -44,12 +44,7 @@
     }
 
     getDevices() {
-        if (this.devices.length != 0) {
-            return this.devices
-        } else {
-            console.error('This user has not devices!')
-            return undefined
-        }
+        return this.devis.length != 0 ? this.devices : false
     }
 
     getDeviceById(id) {

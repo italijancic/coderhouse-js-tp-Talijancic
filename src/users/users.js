@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		// Validate empty fields
 		if (newUser.username && newUser.email && newUser.password) {
+
 			const result = users.addUser(new User(newUser.username, newUser.email, newUser.password, [], newUser.creationDate))
 
 			if (result) {
