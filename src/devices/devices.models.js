@@ -49,7 +49,7 @@ class Device {
         const foundDevices = this.devices.filter((device) => {
             return device.model === model
         })
-        return foundDevices !== undefined ? { success: true, devices: foundDevices } : { success: false, message: 'Not device found!'}
+        return foundDevices.length != 0 ? { success: true, devices: foundDevices } : { success: false, message: 'Not device found!'}
     }
 
     addDevice(newDevice) {
