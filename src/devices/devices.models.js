@@ -35,14 +35,21 @@ class Device {
     }
 
     getDevices() {
-        return this.devices.length != 0 ? this.devices : { success: false, message: 'Device list ins empty!' }
+        return this.devices.length != 0 ? { success: true,  devices: this.devices } : { success: false, message: 'Device list is empty!' }
     }
 
     getDeviceById(id) {
         const foundDevice = this.devices.find((device) => {
             return device.id === id
         })
-        return foundDevice !== undefined ? foundDevice : { success: false, message: 'Incorrect or missing device ID!' }
+        return foundDevice !== undefined ? { success: true, device: foundDevice } : { success: false, message: 'Incorrect or missing device ID!' }
+    }
+
+    getDeviceByModel(model) {
+        const foundDevices = this.devices.filter((device) => {
+            return device.model === model
+        })
+        return foundDevices !== undefined ? { success: true, devices: foundDevices } : { success: false, message: 'Not device found!'}
     }
 
     addDevice(newDevice) {

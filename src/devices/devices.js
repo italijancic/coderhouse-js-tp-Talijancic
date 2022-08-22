@@ -1,12 +1,16 @@
 import { Device } from './devices.models.js';
-import { devices, renderDevicesList } from './devices.services.js'
+import { devices, renderDevicesList, renderDevicesSearchResult } from './devices.services.js'
 import { errorAlert, successAlert } from '../SweetAlert/alerts.js'
 
 
 document.addEventListener('DOMContentLoaded', () => {
 
-	renderDevicesList(devices.getDevices())
+	// Render device table
+	devices.getDevices().success ? renderDevicesList(devices.getDevices().devices) : console.log(devices.getDevices().message)
 
+	// Event handlers
+
+	// New device form submit
 	document.querySelector('#new-device-form').addEventListener('submit', (event) => {
 
 		event.preventDefault()
@@ -28,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (result.success) {
 				successAlert(result.message)
 				// Render new devices list
-				renderDevicesList(devices.getDevices())
+				renderDevicesList(devices.getDevices().devices)
 				// Save new data on session storage
 				sessionStorage.setItem('devices', JSON.stringify(devices))
 				// Clear form
@@ -41,6 +45,40 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		} else {
 			errorAlert('All data fields are required!')
+		}
+
+	})
+
+	// Search device form submit
+	document.querySelector('#search-device-form').addEventListener('submit', (event) => {
+
+		event.preventDefault()
+
+		let searchFilterBy = event.target[0][event.target[0].selectedIndex].text
+		let searchKey = event.target[1].value
+		let searchResult = undefined;
+
+		// Check not null search key
+		if (searchKey) {
+			switch (searchFilterBy) {
+				case 'Id':
+					// Search device by Id
+					searchResult = devices.getDeviceById(searchKey)
+					searchResult.success ? renderDevicesSearchResult([searchResult.device]) : errorAlert(searchResult.message)
+					break;
+
+				case 'Model':
+					// Search device by model
+					searchResult = devices.getDeviceByModel(searchKey)
+					searchResult.success ? renderDevicesSearchResult(searchResult.devices) : errorAlert(searchResult.message)
+					break;
+
+				default:
+					errorAlert('Select one serch filter (Id or Model)')
+					break;
+			}
+		} else {
+			errorAlert('Empty search field!')
 		}
 
 	})

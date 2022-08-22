@@ -19,11 +19,11 @@ if (sessionStorage.getItem('users') !== null) {
 }
 
 // Add devices to users objects
-users.getUserByName('italijancic').addDevice(devices.getDeviceById('08:3a:f2:49:8d:7c'))
-users.getUserByName('italijancic').addDevice(devices.getDeviceById('8c:4b:14:0e:7f:58'))
-users.getUserByName('cdomenje').addDevice(devices.getDeviceById('8c:4b:14:0e:7f:58'))
-users.getUserByName('cdomenje').addDevice(devices.getDeviceById('cc:50:e3:82:f0:6a'))
-users.getUserByName('cdomenje').addDevice(devices.getDeviceById('8c:4b:14:10:a0:40'))
+users.getUserByName('italijancic').user.addDevice(devices.getDeviceById('08:3a:f2:49:8d:7c').device)
+users.getUserByName('italijancic').user.addDevice(devices.getDeviceById('8c:4b:14:0e:7f:58').device)
+users.getUserByName('cdomenje').user.addDevice(devices.getDeviceById('8c:4b:14:0e:7f:58').device)
+users.getUserByName('cdomenje').user.addDevice(devices.getDeviceById('cc:50:e3:82:f0:6a').device)
+users.getUserByName('cdomenje').user.addDevice(devices.getDeviceById('8c:4b:14:10:a0:40').device)
 
 const renderUsersList = (users) => {
 
@@ -45,4 +45,26 @@ const renderUsersList = (users) => {
 	document.querySelector('#users-data').innerHTML = usersRowData
 }
 
-export {users, renderUsersList}
+const renderUsersSearchResult = (users) => {
+
+	// Render devices list
+	let deviceRowData = ''
+
+	users.forEach((user, index) => {
+		deviceRowData += `
+	<tr>
+		<th scope="row">${index + 1}</th>
+		<td>${user.username}</td>
+		<td>${user.email}</td>
+		<td>${user.password}</td>
+		<td>${user.devices.length}</td>
+		<td>${user.creationDate}</td>
+	</tr>`
+	})
+
+	document.querySelector('#users-search-result').innerHTML = deviceRowData
+
+	document.querySelector('#search-results').style.display = 'block'
+}
+
+export {users, renderUsersList, renderUsersSearchResult}

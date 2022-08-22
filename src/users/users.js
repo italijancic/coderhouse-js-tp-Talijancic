@@ -1,10 +1,11 @@
 import { User } from './users.models.js'
-import { users, renderUsersList } from './users.services.js';
+import { users, renderUsersList, renderUsersSearchResult } from './users.services.js';
 import { errorAlert, successAlert } from '../SweetAlert/alerts.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
-	renderUsersList(users.getUsers())
+	// Render users table
+	users.getUsers().success ? renderUsersList(users.getUsers().users) : console.log(users.getUsers())
 
 	// Show password
 	document.querySelector('#showPassword').addEventListener('click', () => {
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	})
 
-
+	// New users form submit
 	document.querySelector('#new-user-form').addEventListener('submit', (event) => {
 
 		event.preventDefault()
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				// Sweetalert2 OK msg
 				successAlert(result.message)
 				// Render new users list
-				renderUsersList(users.getUsers())
+				renderUsersList(users.getUsers().users)
 				// Save new data on session storage
 				sessionStorage.setItem('users', JSON.stringify(users))
 				// Clear form
@@ -50,6 +51,39 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		} else {
 			errorAlert('All data fields are required!')
+		}
+
+	})
+
+	// Search user form submit
+	document.querySelector('#search-user-form').addEventListener('submit', (event) => {
+
+		event.preventDefault()
+
+		let searchFilterBy = event.target[0][event.target[0].selectedIndex].text
+		let searchKey = event.target[1].value
+		let searchResult = {};
+
+		if (searchKey) {
+			switch (searchFilterBy) {
+				case 'Username':
+					// Search device by Id
+					searchResult = users.getUserByName(searchKey)
+					searchResult.success ? renderUsersSearchResult([searchResult.user]) : errorAlert(searchResult.message)
+					break;
+
+				case 'Email':
+					// Search device by model
+					searchResult = users.getUserByEmail(searchKey)
+					searchResult.success ? renderUsersSearchResult([searchResult.user]) : errorAlert(searchResult.message)
+					break;
+
+				default:
+					errorAlert('Select one serch filter (Username or Email)')
+					break;
+			}
+		} else {
+			errorAlert('Empty search field!')
 		}
 
 	})

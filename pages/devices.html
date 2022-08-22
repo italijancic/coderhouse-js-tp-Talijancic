@@ -90,7 +90,7 @@
 					<div class="card bg-light shadow border-0">
 						<div class="card-body">
 							<h2 class="display-5">Search Device</h2>
-							<form id="search-user-form" action="" method="post">
+							<form id="search-device-form" action="" method="post">
 								<div class="form-group mb-3">
 									<label for="device-user-field">Search by</label>
 									<select id="device-user-field" class="form-select" aria-label="Model select">
@@ -112,6 +112,26 @@
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<!-- Devices Search Result -->
+		<div class="container mt-5" id="search-results" style="display: none;">
+			<h2 class="display-4">Search result</h2>
+			<table class="table table-warning table-hover shadow">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">model</th>
+						<th scope="col">id</th>
+						<th scope="col">name</th>
+						<th scope="col">location</th>
+						<th scope="col">created</th>
+					</tr>
+				</thead>
+				<tbody id="devices-search-result">
+					<!-- Dynamic data here! -->
+				</tbody>
+			</table>
 		</div>
 
 		<!-- Devices table -->

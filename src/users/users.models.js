@@ -99,7 +99,7 @@ class Users {
     }
 
     getUsers() {
-        return this.users
+        return this.users.length != 0 ? { success: true, users: this.users } : { success: false, message: 'Users list is empty'}
     }
 
     addUser(newUser) {
@@ -130,14 +130,14 @@ class Users {
         const foundUser = this.users.find((user) => {
             return user.username === username
         })
-        return foundUser != undefined ? foundUser : { success: false, message: 'Incorrect or missing username'}
+        return foundUser != undefined ? { success: true, user: foundUser } : { success: false, message: 'Incorrect or missing username'}
     }
 
     getUserByEmail(email) {
         const foundUser = this.users.find((user) => {
             return user.email === email
         })
-        return foundUser != undefined ? foundUser : { success: false, message: 'Incorrect or missing email'}
+        return foundUser != undefined ? { success: true, user: foundUser } : { success: false, message: 'Incorrect or missing email'}
     }
 
     deleteUserByUsername(username) {

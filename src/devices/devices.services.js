@@ -36,4 +36,26 @@ const renderDevicesList = (devices) => {
 	document.querySelector('#devices-data').innerHTML = deviceRowData
 }
 
-export { devices, renderDevicesList }
+const renderDevicesSearchResult = (devices) => {
+
+	// Render devices list
+	let deviceRowData = ''
+
+	devices.forEach((device, index) => {
+		deviceRowData += `
+	<tr>
+		<th scope="row">${index + 1}</th>
+		<td>${device.model}</td>
+		<td>${device.id}</td>
+		<td>${device.name}</td>
+		<td>${device.location}</td>
+		<td>${device.creationDate.toLocaleString()}</td>
+	</tr>`
+	})
+
+	document.querySelector('#devices-search-result').innerHTML = deviceRowData
+
+	document.querySelector('#search-results').style.display = 'block'
+}
+
+export { devices, renderDevicesList, renderDevicesSearchResult }
