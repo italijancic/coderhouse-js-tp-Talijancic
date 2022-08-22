@@ -25,7 +25,6 @@ users.getUserByName('cdomenje').addDevice(devices.getDeviceById('8c:4b:14:0e:7f:
 users.getUserByName('cdomenje').addDevice(devices.getDeviceById('cc:50:e3:82:f0:6a'))
 users.getUserByName('cdomenje').addDevice(devices.getDeviceById('8c:4b:14:10:a0:40'))
 
-
 const renderUsersList = (users) => {
 
 	// Render users list

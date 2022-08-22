@@ -42,7 +42,7 @@ class Device {
         const foundDevice = this.devices.find((device) => {
             return device.id === id
         })
-        return foundDevice !== undefined ? { success: true, device: foundDevice } : { success: false, message: 'Incorrect or missing device ID!' }
+        return foundDevice !== undefined ? foundDevice : { success: false, message: 'Incorrect or missing device ID!' }
     }
 
     addDevice(newDevice) {
