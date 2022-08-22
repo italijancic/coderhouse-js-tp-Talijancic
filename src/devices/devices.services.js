@@ -4,7 +4,7 @@ import { Device, Devices } from "./devices.models.js"
 const devices = new Devices([])
 
 if (sessionStorage.getItem('devices') !== null) {
-	const storageDevices = JSON.parse(sessionStorage.getItem('devices')).devices
+	const { devices: storageDevices } = JSON.parse(sessionStorage.getItem('devices'))
 	storageDevices.forEach((device) => {
 		devices.addDevice(new Device(device.model, device.id, device.name, device.location, device.creationDate))
 	})

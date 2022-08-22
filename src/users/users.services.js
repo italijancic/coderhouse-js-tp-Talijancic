@@ -6,7 +6,7 @@ const users = new Users([])
 
 // Get data from sesion store
 if (sessionStorage.getItem('users') !== null) {
-	const storageUsers = JSON.parse(sessionStorage.getItem('users')).users
+	const { users: storageUsers } = JSON.parse(sessionStorage.getItem('users'))
 	storageUsers.forEach((user) => {
 		users.addUser(new User(user.username, user.email, user.password, [], user.creationDate))
 	})

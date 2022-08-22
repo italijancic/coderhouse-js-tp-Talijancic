@@ -44,12 +44,7 @@
     }
 
     getDevices() {
-        if (this.devices.length != 0) {
-            return this.devices
-        } else {
-            console.error('This user has not devices!')
-            return undefined
-        }
+        return this.devis.length != 0 ? this.devices : false
     }
 
     getDeviceById(id) {
@@ -114,12 +109,21 @@ class Users {
 		// Check not null user fields
 		if( newUser.username !== '' ) {
 			// Check not repeat username
-			const foundUser = this.users.find((user) => {
+			let foundUser = this.users.find((user) => {
 				return user.username === newUser.username
 			})
 			if ( foundUser === undefined ) {
-				this.users.push(newUser)
-                return true
+                // Check not repear email
+                foundUser = this.users.find((user) => {
+                    return user.email === newUser.email
+                })
+                if ( foundUser === undefined ) {
+                    this.users.push(newUser)
+                    return true
+                } else {
+                    console.error('Email already exist')
+                    return false
+                }
 			} else {
 				console.error('Username already exist')
 				return false

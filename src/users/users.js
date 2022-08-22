@@ -29,23 +29,28 @@ document.addEventListener('DOMContentLoaded', () => {
 			"creationDate": new Date().toLocaleString()
 		}
 
-		const result = users.addUser(new User(newUser.username, newUser.email, newUser.password, [], newUser.creationDate))
+		// Validate empty fields
+		if (newUser.username && newUser.email && newUser.password) {
 
-		if (result) {
-			// Sweetalert2 OK msg
-			successAlert('User added to users list!')
-			// Render new users list
-			renderUsersList(users.getUsers())
-			// Save new data on session storage
-			sessionStorage.setItem('users', JSON.stringify(users))
+			const result = users.addUser(new User(newUser.username, newUser.email, newUser.password, [], newUser.creationDate))
+
+			if (result) {
+				// Sweetalert2 OK msg
+				successAlert('User added to users list!')
+				// Render new users list
+				renderUsersList(users.getUsers())
+				// Save new data on session storage
+				sessionStorage.setItem('users', JSON.stringify(users))
+				// Clear form
+				document.querySelector('#username-text-input').value = ''
+				document.querySelector('#email-text-input').value = ''
+				document.querySelector('#password-text-input').value = ''
+			} else {
+				errorAlert('Username or Email already exist!')
+			}
 		} else {
-			errorAlert('Username already exist!')
+			errorAlert('All data fields are required!')
 		}
-
-		// Clear form
-		document.querySelector('#username-text-input').value = ''
-		document.querySelector('#email-text-input').value = ''
-		document.querySelector('#password-text-input').value = ''
 
 	})
 
