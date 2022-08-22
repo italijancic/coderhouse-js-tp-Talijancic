@@ -34,9 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			const result = users.addUser(new User(newUser.username, newUser.email, newUser.password, [], newUser.creationDate))
 
-			if (result) {
+			if (result.success) {
 				// Sweetalert2 OK msg
-				successAlert('User added to users list!')
+				successAlert(result.message)
 				// Render new users list
 				renderUsersList(users.getUsers())
 				// Save new data on session storage
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				document.querySelector('#email-text-input').value = ''
 				document.querySelector('#password-text-input').value = ''
 			} else {
-				errorAlert('Username or Email already exist!')
+				errorAlert(result.message)
 			}
 		} else {
 			errorAlert('All data fields are required!')

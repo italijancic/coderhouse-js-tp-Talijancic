@@ -44,22 +44,15 @@
     }
 
     getDevices() {
-        return this.devis.length != 0 ? this.devices : false
+        return this.devices.length != 0 ? this.devices : { success: false, message: 'This user has not devices!' }
     }
 
     getDeviceById(id) {
         if (this.devices.length != 0) {
             const foundDevice = this.devices.find((device) => (device.id === id))
-
-            if (foundDevice !== undefined) {
-                return foundDevice
-            } else {
-                console.error('Device ID does not exist on devices list')
-                return undefined
-            }
+            return foundDevice !== undefined ? foundDevice : { success: false, message: 'Device ID does not exist on devices list'}
         } else {
-            console.error('This user has not devices!')
-            return undefined
+            return { success: false, message: 'This user has not devices!' }
         }
     }
 
@@ -67,10 +60,11 @@
         const foundDevice = this.devices.find((device) => (device.id === newDevice.id))
         if (foundDevice === undefined) {
             this.devices.push(newDevice)
+            return { success: true, message: 'New device addedd to device list' }
         } else {
-            console.error('Device ID alreadey exist on this user devices list')
-            return undefined
+            return { success: false, message: 'Device ID alreadey exist on this user devices list' }
         }
+
     }
 
     addDevices(newDevices) {
@@ -81,9 +75,12 @@
         const newDeviceList = this.devices.filter((device) => {
             return device.id != id
         })
-
         this.devices = newDeviceList
-        return this.devices
+        return {
+            success: true,
+            message: 'Delete device from device list OK',
+            newDeviceList: this.devices
+        }
     }
 }
 
@@ -119,14 +116,12 @@ class Users {
                 })
                 if ( foundUser === undefined ) {
                     this.users.push(newUser)
-                    return true
+                    return { success: true, message: `${newUser.username} has been added to users list successfully!`}
                 } else {
-                    console.error('Email already exist')
-                    return false
+                    return { success: false, message: 'Email already exist' }
                 }
 			} else {
-				console.error('Username already exist')
-				return false
+                return { success: false, message: 'Username already exist' }
 			}
 		}
     }
@@ -135,26 +130,14 @@ class Users {
         const foundUser = this.users.find((user) => {
             return user.username === username
         })
-
-        if (foundUser != undefined) {
-            return foundUser
-        } else {
-           console.error('Incorrect or missing username')
-            return undefined
-        }
+        return foundUser != undefined ? foundUser : { success: false, message: 'Incorrect or missing username'}
     }
 
     getUserByEmail(email) {
         const foundUser = this.users.find((user) => {
             return user.email === email
         })
-
-        if (foundUser != undefined) {
-            return foundUser
-        } else {
-            console.error('Incorrect or missing email')
-            return undefined
-        }
+        return foundUser != undefined ? foundUser : { success: false, message: 'Incorrect or missing email'}
     }
 
     deleteUserByUsername(username) {
@@ -163,7 +146,11 @@ class Users {
         })
 
         this.users = newUsersList
-        return this.users
+        return {
+            success: true,
+            message: 'Delete user from users list OK',
+            newDeviceList: this.users
+        }
     }
 
 }

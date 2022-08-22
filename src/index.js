@@ -15,4 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Render devices table
 	renderDevicesList(devices.getDevices())
 
+	let result = users.getUserByName('italijancic').getDeviceById('8c:4b:14:0e:7f:24')
+	console.log(result)
 })
