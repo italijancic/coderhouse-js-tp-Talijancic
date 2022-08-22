@@ -18,7 +18,7 @@
 
 	<!-- Header -->
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
 			<div class="container">
 				<a class="navbar-brand" href="#">
 					<img src="../img/LogoNegro.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
@@ -47,7 +47,7 @@
 	<!-- Main -->
 	<main>
 
-		<div class="container mt-4">
+		<div class="container mt-5">
 			<div class="row">
 				<!-- New User Form -->
 				<div class="col-lg-6">
@@ -81,8 +81,8 @@
 					</div>
 				</div>
 
-				<!-- Search user form -->
-				<div class="col-lg-6">
+				<!-- Users search form -->
+				<div class="col-lg-6 mt-4 mt-lg-0">
 					<div class="card bg-light shadow border-0">
 						<div class="card-body">
 							<h2 class="display-5">Search User</h2>
@@ -90,7 +90,7 @@
 								<div class="form-group mb-3">
 									<label for="search-user-field">Search by</label>
 									<select id="search-user-field" class="form-select" aria-label="Model select">
-										<option selected>Select searc field</option>
+										<option selected>Select search field</option>
 										<option value="1">Username</option>
 										<option value="2">Email</option>
 									</select>
@@ -101,7 +101,7 @@
 										placeholder="email or username">
 								</div>
 								<div class="form-group mb-2 text-end">
-									<button type="submit" id="btnSearchUser" class="btn btn-primary btn-lg">Search</button>
+									<button type="submit" id="btnSearchUser" class="btn btn-dark btn-lg">Search</button>
 								</div>
 							</form>
 						</div>
@@ -134,11 +134,10 @@
 	</main>
 
 	<!-- Footer -->
-	<footer class="footer bg-light py-3 mt-5">
+	<footer class="footer bg-light py-3 mt-5 shadow">
 		<div class="container text-center">
 			<span class="text-muted"> 🚀 D&T Soluciones 2022</span>
 		</div>
-
 	</footer>
 
 	<!-- Sweetalert2 -->
