@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			const result = devices.addDevice(new Device(newDevice.model, newDevice.id, newDevice.name, newDevice.location, newDevice.creationDate))
 
-			if (result) {
-				successAlert('Device added to devices list')
+			if (result.success) {
+				successAlert(result.message)
 				// Render new devices list
 				renderDevicesList(devices.getDevices())
 				// Save new data on session storage
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				document.querySelector('#device-name-text-input').value = ''
 				document.querySelector('#device-location-text-input').value = ''
 			} else {
-				errorAlert('Device ID already exist')
+				errorAlert(result.message)
 			}
 		} else {
 			errorAlert('All data fields are required!')
