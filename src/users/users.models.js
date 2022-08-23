@@ -44,7 +44,7 @@
     }
 
     getDevices() {
-        return this.devices.length != 0 ? this.devices : { success: false, message: 'This user has not devices!' }
+        return this.devices.length != 0 ? {success: true, devices: this.devices} : { success: false, message: 'This user has not devices!' }
     }
 
     getDeviceById(id) {

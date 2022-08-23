@@ -1,5 +1,6 @@
 import { Device } from './devices.models.js';
 import { devices, renderDevicesList, renderDevicesSearchResult } from './devices.services.js'
+import { users } from '../users/users.services.js'
 import { errorAlert, successAlert } from '../SweetAlert/alerts.js'
 
 
@@ -72,6 +73,20 @@ document.addEventListener('DOMContentLoaded', () => {
 					searchResult = devices.getDeviceByModel(searchKey)
 					searchResult.success ? renderDevicesSearchResult(searchResult.devices) : errorAlert(searchResult.message)
 					break;
+
+				case 'Username':
+					// Search devices by username
+					searchResult = users.getUserByName(searchKey)
+					// If username was found
+					if (searchResult.success) {
+						// Get all devices of this user
+						searchResult = searchResult.user.getDevices()
+						searchResult.success ? renderDevicesSearchResult(searchResult.devices) : errorAlert(searchResult.message)
+						break;
+					} else {
+						errorAlert(searchResult.message)
+						break;
+					}
 
 				default:
 					errorAlert('Select one serch filter (Id or Model)')
