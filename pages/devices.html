@@ -92,16 +92,16 @@
 							<h2 class="display-5">Search Device</h2>
 							<form id="search-device-form" action="" method="post">
 								<div class="form-group mb-3">
-									<label for="device-user-field">Search by</label>
+									<label for="device-user-field">Search filter</label>
 									<select id="device-user-field" class="form-select" aria-label="Model select">
-										<option selected>Select search field</option>
+										<option selected>Select search filter</option>
 										<option value="1">Id</option>
 										<option value="2">Model</option>
 										<option value="2">Username</option>
 									</select>
 								</div>
 								<div class="form-group mb-3">
-									<label for="device-field-input">Search field</label>
+									<label for="device-field-input">Search key</label>
 									<input id="device-field-niput" name="device-id" type="text" class="form-control"
 										placeholder="Device Model or Id">
 								</div>
@@ -117,7 +117,8 @@
 
 		<!-- Devices Search Result -->
 		<div class="container mt-5" id="search-results" style="display: none;">
-			<h2 class="display-4">Search result</h2>
+			<h2 class="display-5">Search result</h2>
+			<h3 class="lead" id="devices-search-data"></h3>
 			<table class="table table-warning table-hover shadow">
 				<thead>
 					<tr>
@@ -137,7 +138,7 @@
 
 		<!-- Devices table -->
 		<div class="container mt-5">
-			<h2 class="display-4">Devices</h2>
+			<h2 class="display-5">Devices</h2>
 			<table class="table table-success table-hover shadow">
 				<thead>
 					<tr>

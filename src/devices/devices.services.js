@@ -19,42 +19,46 @@ if (sessionStorage.getItem('devices') !== null) {
 const renderDevicesList = (devices) => {
 
 	// Render devices list
-	let deviceRowData = ''
+	const tableFragment = new DocumentFragment()
 
 	devices.forEach((device, index) => {
-		deviceRowData += `
-	<tr>
-		<th scope="row">${index + 1}</th>
-		<td>${device.model}</td>
-		<td>${device.id}</td>
-		<td>${device.name}</td>
-		<td>${device.location}</td>
-		<td>${device.creationDate.toLocaleString()}</td>
-	</tr>`
+		const deviceRowData = document.createElement('tr')
+
+		deviceRowData.innerHTML = `
+		<tr>
+			<th scope="row">${index + 1}</th>
+			<td>${device.model}</td>
+			<td>${device.id}</td>
+			<td>${device.name}</td>
+			<td>${device.location}</td>
+			<td>${device.creationDate.toLocaleString()}</td>
+		</tr>`
+
+		tableFragment.appendChild(deviceRowData)
 	})
 
-	document.querySelector('#devices-data').innerHTML = deviceRowData
+	document.querySelector('#devices-data').appendChild(tableFragment)
 }
 
-const renderDevicesSearchResult = (devices) => {
+const renderDevicesSearchResult = (devices, searchData) => {
 
 	// Render devices list
 	let deviceRowData = ''
 
 	devices.forEach((device, index) => {
 		deviceRowData += `
-	<tr>
-		<th scope="row">${index + 1}</th>
-		<td>${device.model}</td>
-		<td>${device.id}</td>
-		<td>${device.name}</td>
-		<td>${device.location}</td>
-		<td>${device.creationDate.toLocaleString()}</td>
-	</tr>`
+		<tr>
+			<th scope="row">${index + 1}</th>
+			<td>${device.model}</td>
+			<td>${device.id}</td>
+			<td>${device.name}</td>
+			<td>${device.location}</td>
+			<td>${device.creationDate.toLocaleString()}</td>
+		</tr>`
 	})
 
 	document.querySelector('#devices-search-result').innerHTML = deviceRowData
-
+	document.querySelector('#devices-search-data').innerHTML = `Filter: ${searchData.filter} - Key: ${searchData.key}`
 	document.querySelector('#search-results').style.display = 'block'
 }
 

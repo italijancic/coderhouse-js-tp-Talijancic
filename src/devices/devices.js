@@ -55,8 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		event.preventDefault()
 
-		let searchFilterBy = event.target[0][event.target[0].selectedIndex].text
-		let searchKey = event.target[1].value
+		const searchFilterBy = event.target[0][event.target[0].selectedIndex].text
+		const searchKey = event.target[1].value
+		const searchData = { filter: searchFilterBy, key: searchKey }
 		let searchResult = undefined;
 
 		// Check not null search key
@@ -65,13 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
 				case 'Id':
 					// Search device by Id
 					searchResult = devices.getDeviceById(searchKey)
-					searchResult.success ? renderDevicesSearchResult([searchResult.device]) : errorAlert(searchResult.message)
+					searchResult.success ? renderDevicesSearchResult([searchResult.device], searchData) : errorAlert(searchResult.message)
 					break;
 
 				case 'Model':
 					// Search device by model
 					searchResult = devices.getDeviceByModel(searchKey)
-					searchResult.success ? renderDevicesSearchResult(searchResult.devices) : errorAlert(searchResult.message)
+					searchResult.success ? renderDevicesSearchResult(searchResult.devices, searchData) : errorAlert(searchResult.message)
 					break;
 
 				case 'Username':
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					if (searchResult.success) {
 						// Get all devices of this user
 						searchResult = searchResult.user.getDevices()
-						searchResult.success ? renderDevicesSearchResult(searchResult.devices) : errorAlert(searchResult.message)
+						searchResult.success ? renderDevicesSearchResult(searchResult.devices, searchData) : errorAlert(searchResult.message)
 						break;
 					} else {
 						errorAlert(searchResult.message)

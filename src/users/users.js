@@ -60,8 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		event.preventDefault()
 
-		let searchFilterBy = event.target[0][event.target[0].selectedIndex].text
-		let searchKey = event.target[1].value
+		const searchFilterBy = event.target[0][event.target[0].selectedIndex].text
+		const searchKey = event.target[1].value
+		const searchData = { filter: searchFilterBy, key: searchKey }
 		let searchResult = {};
 
 		if (searchKey) {
@@ -69,13 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
 				case 'Username':
 					// Search device by Id
 					searchResult = users.getUserByName(searchKey)
-					searchResult.success ? renderUsersSearchResult([searchResult.user]) : errorAlert(searchResult.message)
+					searchResult.success ? renderUsersSearchResult([searchResult.user], searchData) : errorAlert(searchResult.message)
 					break;
 
 				case 'Email':
 					// Search device by model
 					searchResult = users.getUserByEmail(searchKey)
-					searchResult.success ? renderUsersSearchResult([searchResult.user]) : errorAlert(searchResult.message)
+					searchResult.success ? renderUsersSearchResult([searchResult.user], searchData) : errorAlert(searchResult.message)
 					break;
 
 				default:

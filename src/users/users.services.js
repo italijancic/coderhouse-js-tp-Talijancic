@@ -45,7 +45,7 @@ const renderUsersList = (users) => {
 	document.querySelector('#users-data').innerHTML = usersRowData
 }
 
-const renderUsersSearchResult = (users) => {
+const renderUsersSearchResult = (users, searchData) => {
 
 	// Render devices list
 	let deviceRowData = ''
@@ -63,7 +63,7 @@ const renderUsersSearchResult = (users) => {
 	})
 
 	document.querySelector('#users-search-result').innerHTML = deviceRowData
-
+	document.querySelector('#users-search-data').innerHTML = `Filter: ${searchData.filter} - Key: ${searchData.key}`
 	document.querySelector('#search-results').style.display = 'block'
 }
 

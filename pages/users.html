@@ -88,15 +88,15 @@
 							<h2 class="display-5">Search User</h2>
 							<form id="search-user-form" action="" method="post">
 								<div class="form-group mb-3">
-									<label for="search-user-field">Search by</label>
+									<label for="search-user-field">Search filter</label>
 									<select id="search-user-field" class="form-select" aria-label="Model select">
-										<option selected>Select search field</option>
+										<option selected>Select search filter</option>
 										<option value="1">Username</option>
 										<option value="2">Email</option>
 									</select>
 								</div>
 								<div class="form-group mb-3">
-									<label for="search-field-input">Search field</label>
+									<label for="search-field-input">Search key</label>
 									<input id="search-field-niput" name="device-id" type="text" class="form-control"
 										placeholder="email or username">
 								</div>
@@ -112,7 +112,8 @@
 
 		<!-- User Search Result -->
 		<div class="container mt-5" id="search-results" style="display: none;">
-			<h2 class="display-4">Search result</h2>
+			<h2 class="display-5">Search result</h2>
+			<h3 class="lead" id="users-search-data"></h3>
 			<table class="table table-warning table-hover shadow">
 				<thead>
 					<tr>
@@ -132,7 +133,7 @@
 
 		<!-- Users table -->
 		<div class="container mt-5">
-			<h2 class="display-4">Users</h2>
+			<h2 class="display-5">Users</h2>
 			<table class="table table-primary table-hover shadow">
 				<thead>
 					<tr>
