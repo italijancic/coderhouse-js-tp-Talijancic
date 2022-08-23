@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				case 'Model':
 					// Search device by model
 					searchResult = devices.getDeviceByModel(searchKey)
-					console.log(searchResult)
 					searchResult.success ? renderDevicesSearchResult(searchResult.devices) : errorAlert(searchResult.message)
 					break;
 
