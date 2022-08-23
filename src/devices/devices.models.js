@@ -35,7 +35,7 @@ class Device {
     }
 
     getDevices() {
-        return this.devices.length != 0 ? { success: true,  devices: this.devices } : { success: false, message: 'Device list is empty!' }
+        return this.devices.length != 0 ? { success: true,  devices: this.devices } : { success: false, message: 'This user has not devices!' }
     }
 
     getDeviceById(id) {
