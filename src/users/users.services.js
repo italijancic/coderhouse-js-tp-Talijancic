@@ -53,6 +53,7 @@ const renderUsersList = (users) => {
 const renderUsersSearchResult = (users, searchData) => {
 
 	const fragment = document.createDocumentFragment()
+	document.querySelector('#users-search-result').innerHTML = ''
 
 	users.forEach((user, index) => {
 		const userRowData = document.createElement('tr')

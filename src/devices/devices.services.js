@@ -42,7 +42,8 @@ const renderDevicesList = (devices) => {
 
 const renderDevicesSearchResult = (devices, searchData) => {
 
-	const fragment = document.createDocumentFragment()
+	const fragment = new DocumentFragment()
+	document.querySelector('#devices-search-result').innerHTML = ''
 
 	devices.forEach((device, index) => {
 		const deviceRowData = document.createElement('tr')
