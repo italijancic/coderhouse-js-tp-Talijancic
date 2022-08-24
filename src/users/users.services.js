@@ -25,44 +25,52 @@ users.getUserByName('cdomenje').user.addDevice(devices.getDeviceById('8c:4b:14:0
 users.getUserByName('cdomenje').user.addDevice(devices.getDeviceById('cc:50:e3:82:f0:6a').device)
 users.getUserByName('cdomenje').user.addDevice(devices.getDeviceById('8c:4b:14:10:a0:40').device)
 
+
 const renderUsersList = (users) => {
 
-	// Render users list
-	let usersRowData = ''
+	const fragment = document.createDocumentFragment()
 
 	users.forEach((user, index) => {
-		usersRowData += `
-	<tr>
-		<th scope="row">${index + 1}</th>
-		<td>${user.username}</td>
-		<td>${user.email}</td>
-		<td>${user.password}</td>
-		<td>${user.devices.length}</td>
-		<td>${user.creationDate}</td>
-	</tr>`
+		const userRowData = document.createElement('tr')
+
+		userRowData.innerHTML = `
+		<tr>
+			<th scope="row">${index + 1}</th>
+			<td>${user.username}</td>
+			<td>${user.email}</td>
+			<td>${user.password}</td>
+			<td>${user.devices.length}</td>
+			<td>${user.creationDate}</td>
+		</tr>`
+
+		fragment.appendChild(userRowData)
 	})
 
-	document.querySelector('#users-data').innerHTML = usersRowData
+	document.querySelector('#users-data').appendChild(fragment)
+	// document.querySelector('#users-data').innerHTML = usersRowData
 }
 
 const renderUsersSearchResult = (users, searchData) => {
 
-	// Render devices list
-	let deviceRowData = ''
+	const fragment = document.createDocumentFragment()
 
 	users.forEach((user, index) => {
-		deviceRowData += `
-	<tr>
-		<th scope="row">${index + 1}</th>
-		<td>${user.username}</td>
-		<td>${user.email}</td>
-		<td>${user.password}</td>
-		<td>${user.devices.length}</td>
-		<td>${user.creationDate}</td>
-	</tr>`
+		const userRowData = document.createElement('tr')
+
+		userRowData.innerHTML = `
+		<tr>
+			<th scope="row">${index + 1}</th>
+			<td>${user.username}</td>
+			<td>${user.email}</td>
+			<td>${user.password}</td>
+			<td>${user.devices.length}</td>
+			<td>${user.creationDate}</td>
+		</tr>`
+
+		fragment.appendChild(userRowData)
 	})
 
-	document.querySelector('#users-search-result').innerHTML = deviceRowData
+	document.querySelector('#users-search-result').appendChild(fragment)
 	document.querySelector('#users-search-data').innerHTML = `Filter: ${searchData.filter} - Key: ${searchData.key}`
 	document.querySelector('#search-results').style.display = 'block'
 }

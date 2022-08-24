@@ -16,10 +16,10 @@ if (sessionStorage.getItem('devices') !== null) {
 	sessionStorage.setItem('devices', JSON.stringify(devices))
 }
 
+
 const renderDevicesList = (devices) => {
 
-	// Render devices list
-	const tableFragment = new DocumentFragment()
+	const fragment = document.createDocumentFragment()
 
 	devices.forEach((device, index) => {
 		const deviceRowData = document.createElement('tr')
@@ -34,19 +34,20 @@ const renderDevicesList = (devices) => {
 			<td>${device.creationDate.toLocaleString()}</td>
 		</tr>`
 
-		tableFragment.appendChild(deviceRowData)
+		fragment.appendChild(deviceRowData)
 	})
 
-	document.querySelector('#devices-data').appendChild(tableFragment)
+	document.querySelector('#devices-data').appendChild(fragment)
 }
 
 const renderDevicesSearchResult = (devices, searchData) => {
 
-	// Render devices list
-	let deviceRowData = ''
+	const fragment = document.createDocumentFragment()
 
 	devices.forEach((device, index) => {
-		deviceRowData += `
+		const deviceRowData = document.createElement('tr')
+
+		deviceRowData.innerHTML = `
 		<tr>
 			<th scope="row">${index + 1}</th>
 			<td>${device.model}</td>
@@ -55,9 +56,11 @@ const renderDevicesSearchResult = (devices, searchData) => {
 			<td>${device.location}</td>
 			<td>${device.creationDate.toLocaleString()}</td>
 		</tr>`
+
+		fragment.appendChild(deviceRowData)
 	})
 
-	document.querySelector('#devices-search-result').innerHTML = deviceRowData
+	document.querySelector('#devices-search-result').appendChild(fragment)
 	document.querySelector('#devices-search-data').innerHTML = `Filter: ${searchData.filter} - Key: ${searchData.key}`
 	document.querySelector('#search-results').style.display = 'block'
 }
