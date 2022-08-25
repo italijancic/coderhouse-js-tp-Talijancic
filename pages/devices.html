@@ -18,7 +18,7 @@
 
 	<!-- Header -->
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
 			<div class="container">
 				<a class="navbar-brand" href="#">
 					<img src="../img/LogoNegro.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
@@ -47,43 +47,98 @@
 	<!-- Main -->
 	<main>
 
-		<!-- New Device Form -->
 		<div class="container mt-5">
-			<div class="col-lg-6 bg-light ps-3 pe-3 pt-2 pb-2 shadow">
-				<h2 class="display-5">New device</h2>
-				<form id="new-device-form" action="" method="post">
-					<div class="form-group mb-3">
-						<label for="device-model-text-input">Model</label>
-						<select id="device-model" class="form-select" aria-label="Model select">
-							<option selected>Select device model</option>
-							<option value="1">CEM</option>
-							<option value="2">T700</option>
-							<option value="3">IoTgw-BT</option>
-							<option value="4">IoTgw-MT</option>
-						</select>
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="card bg-light shadow border-0">
+						<!-- New Device Form -->
+						<div class="card-body">
+							<h2 class="display-5">New device</h2>
+							<form id="new-device-form" action="" method="post">
+								<div class="form-group mb-3">
+									<label for="device-model-text-input">Model</label>
+									<select id="device-model" class="form-select" aria-label="Model select">
+										<option selected>Select device model</option>
+										<option value="1">CEM</option>
+										<option value="2">T700</option>
+										<option value="3">IoTgw-BT</option>
+										<option value="4">IoTgw-MT</option>
+									</select>
+								</div>
+								<div class="form-group mb-3">
+									<label for="device-id-text-input">Id</label>
+									<input id="device-id-text-input" name="device-id" type="text" class="form-control" placeholder="03:3a:34:fc:8d:7c">
+								</div>
+								<div class="form-group mb-3">
+									<label for="device-name-text-input">Name</label>
+									<input id="device-name-text-input" name="device-name" type="text" class="form-control" placeholder="Device descriptive name">
+								</div>
+								<div class="form-group mb-3">
+									<label for="device-location-text-input">Location</label>
+									<input id="device-location-text-input" name="decive-location" type="text" class="form-control" placeholder="Device location">
+								</div>
+								<div class="form-group mb-2 text-end">
+									<button type="submit" id="btnAddDevice" class="btn btn-primary btn-lg">Add Device</button>
+								</div>
+							</form>
+						</div>
 					</div>
-					<div class="form-group mb-3">
-						<label for="device-id-text-input">Id</label>
-						<input id="device-id-text-input" name="device-id" type="text" class="form-control" placeholder="03:3a:34:fc:8d:7c">
+				</div>
+
+				<!-- Devices search form -->
+				<div class="col-lg-6 mt-4 mt-lg-0">
+					<div class="card bg-light shadow border-0">
+						<div class="card-body">
+							<h2 class="display-5">Search Device</h2>
+							<form id="search-device-form" action="" method="post">
+								<div class="form-group mb-3">
+									<label for="device-user-field">Search filter</label>
+									<select id="device-user-field" class="form-select" aria-label="Model select">
+										<option selected>Select search filter</option>
+										<option value="1">Id</option>
+										<option value="2">Model</option>
+										<option value="2">Username</option>
+									</select>
+								</div>
+								<div class="form-group mb-3">
+									<label for="device-field-input">Search key</label>
+									<input id="device-field-niput" name="device-id" type="text" class="form-control"
+										placeholder="Device Model or Id">
+								</div>
+								<div class="form-group mb-2 text-end">
+									<button type="submit" id="btnSearchDevice" class="btn btn-dark btn-lg">Search</button>
+								</div>
+							</form>
+						</div>
 					</div>
-					<div class="form-group mb-3">
-						<label for="device-name-text-input">Name</label>
-						<input id="device-name-text-input" name="device-name" type="text" class="form-control" placeholder="Device descriptive name">
-					</div>
-					<div class="form-group mb-3">
-						<label for="device-location-text-input">Location</label>
-						<input id="device-location-text-input" name="decive-location" type="text" class="form-control" placeholder="Device location">
-					</div>
-					<div class="form-group mb-2 text-end">
-						<button type="submit" id="btnAddDevice" class="btn btn-primary btn-lg">Add Device</button>
-					</div>
-				</form>
+				</div>
 			</div>
+		</div>
+
+		<!-- Devices Search Result -->
+		<div class="container mt-5" id="search-results" style="display: none;">
+			<h2 class="display-5">Search result</h2>
+			<h3 class="lead" id="devices-search-data"></h3>
+			<table class="table table-warning table-hover shadow">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">model</th>
+						<th scope="col">id</th>
+						<th scope="col">name</th>
+						<th scope="col">location</th>
+						<th scope="col">created</th>
+					</tr>
+				</thead>
+				<tbody id="devices-search-result">
+					<!-- Dynamic data here! -->
+				</tbody>
+			</table>
 		</div>
 
 		<!-- Devices table -->
 		<div class="container mt-5">
-			<h2 class="display-4">Devices</h2>
+			<h2 class="display-5">Devices</h2>
 			<table class="table table-success table-hover shadow">
 				<thead>
 					<tr>
@@ -103,7 +158,7 @@
 	</main>
 
 	<!-- Footer -->
-	<footer class="footer bg-light py-3 mt-5">
+	<footer class="footer bg-light py-3 mt-5 shadow">
 		<div class="container text-center">
 			<span class="text-muted"> 🚀 D&T Soluciones 2022</span>
 		</div>

@@ -18,7 +18,7 @@
 
 	<!-- Header -->
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
 			<div class="container">
 				<a class="navbar-brand" href="#">
 					<img src="../img/LogoNegro.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
@@ -47,37 +47,93 @@
 	<!-- Main -->
 	<main>
 
-		<!-- New User Form -->
 		<div class="container mt-5">
-			<div class="col-lg-6 bg-light ps-3 pe-3 pt-2 pb-2 shadow">
-				<h2 class="display-5">New user</h2>
-				<form id="new-user-form" action="" method="post">
-					<div class="form-group mb-3">
-						<label for="username-text-input">Username</label>
-						<input id="username-text-input" name="username" type="text" class="form-control" placeholder="John Doe">
+			<div class="row">
+				<!-- New User Form -->
+				<div class="col-lg-6">
+					<div class="card bg-light shadow border-0">
+						<div class="card-body">
+							<h2 class="display-5">New user</h2>
+							<form id="new-user-form" action="" method="post">
+								<div class="form-group mb-3">
+									<label for="username-text-input">Username</label>
+									<input id="username-text-input" name="username" type="text" class="form-control"
+										placeholder="John Doe">
+								</div>
+								<div class="form-group mb-3">
+									<label for="email-text-input">Email</label>
+									<input id="email-text-input" name="email" type="email" class="form-control"
+										placeholder="jdoe@email.com">
+								</div>
+								<div class="form-group mb-2">
+									<label for="password-text-input">Password</label>
+									<input id="password-text-input" name="password" type="password" class="form-control">
+								</div>
+								<div class="form-group">
+									<input class="form-check-input" type="checkbox" value="" id="showPassword">
+									<label class="form-check-label" for="showPassword">Show password</label>
+								</div>
+								<div class="form-group mb-2 text-end">
+									<button type="submit" id="btnAddUser" class="btn btn-primary btn-lg">Add User</button>
+								</div>
+							</form>
+						</div>
 					</div>
-					<div class="form-group mb-3">
-						<label for="email-text-input">Email</label>
-						<input id="email-text-input" name="email" type="email" class="form-control" placeholder="jdoe@email.com">
+				</div>
+
+				<!-- Users search form -->
+				<div class="col-lg-6 mt-4 mt-lg-0">
+					<div class="card bg-light shadow border-0">
+						<div class="card-body">
+							<h2 class="display-5">Search User</h2>
+							<form id="search-user-form" action="" method="post">
+								<div class="form-group mb-3">
+									<label for="search-user-field">Search filter</label>
+									<select id="search-user-field" class="form-select" aria-label="Model select">
+										<option selected>Select search filter</option>
+										<option value="1">Username</option>
+										<option value="2">Email</option>
+									</select>
+								</div>
+								<div class="form-group mb-3">
+									<label for="search-field-input">Search key</label>
+									<input id="search-field-niput" name="device-id" type="text" class="form-control"
+										placeholder="email or username">
+								</div>
+								<div class="form-group mb-2 text-end">
+									<button type="submit" id="btnSearchUser" class="btn btn-dark btn-lg">Search</button>
+								</div>
+							</form>
+						</div>
 					</div>
-					<div class="form-group mb-2">
-						<label for="password-text-input">Password</label>
-						<input id="password-text-input" name="password" type="password" class="form-control">
-					</div>
-					<div class="form-group">
-						<input class="form-check-input" type="checkbox" value="" id="showPassword">
-						<label class="form-check-label" for="showPassword">Show password</label>
-					</div>
-					<div class="form-group mb-2 text-end">
-						<button type="submit" id="btnAddUser" class="btn btn-primary btn-lg">Add User</button>
-					</div>
-				</form>
+				</div>
 			</div>
+		</div>
+
+		<!-- User Search Result -->
+		<div class="container mt-5" id="search-results" style="display: none;">
+			<h2 class="display-5">Search result</h2>
+			<h3 class="lead" id="users-search-data"></h3>
+			<table class="table table-warning table-hover shadow">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">username</th>
+						<th scope="col">email</th>
+						<th scope="col">password</th>
+						<th scope="col">devices</th>
+						<th scope="col">created</th>
+					</tr>
+				</thead>
+				<tbody id="users-search-result">
+					<!-- Dynamic data here! -->
+				</tbody>
+			</table>
 		</div>
 
 		<!-- Users table -->
 		<div class="container mt-5">
-			<h2 class="display-4">Users</h2>
+			<h2 class="display-5">Users</h2>
 			<table class="table table-primary table-hover shadow">
 				<thead>
 					<tr>
@@ -98,11 +154,10 @@
 	</main>
 
 	<!-- Footer -->
-	<footer class="footer bg-light py-3 mt-5">
+	<footer class="footer bg-light py-3 mt-5 shadow">
 		<div class="container text-center">
 			<span class="text-muted"> 🚀 D&T Soluciones 2022</span>
 		</div>
-
 	</footer>
 
 	<!-- Sweetalert2 -->

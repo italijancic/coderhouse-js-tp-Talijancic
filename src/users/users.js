@@ -1,10 +1,11 @@
 import { User } from './users.models.js'
-import { users, renderUsersList } from './users.services.js';
+import { users, renderUsersList, renderUsersSearchResult } from './users.services.js';
 import { errorAlert, successAlert } from '../SweetAlert/alerts.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
-	renderUsersList(users.getUsers())
+	// Render users table
+	users.getUsers().success ? renderUsersList(users.getUsers().users) : console.log(users.getUsers())
 
 	// Show password
 	document.querySelector('#showPassword').addEventListener('click', () => {
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	})
 
-
+	// New users form submit
 	document.querySelector('#new-user-form').addEventListener('submit', (event) => {
 
 		event.preventDefault()
@@ -34,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			const result = users.addUser(new User(newUser.username, newUser.email, newUser.password, [], newUser.creationDate))
 
-			if (result) {
+			if (result.success) {
 				// Sweetalert2 OK msg
-				successAlert('User added to users list!')
+				successAlert(result.message)
 				// Render new users list
-				renderUsersList(users.getUsers())
+				renderUsersList(users.getUsers().users)
 				// Save new data on session storage
 				sessionStorage.setItem('users', JSON.stringify(users))
 				// Clear form
@@ -46,10 +47,44 @@ document.addEventListener('DOMContentLoaded', () => {
 				document.querySelector('#email-text-input').value = ''
 				document.querySelector('#password-text-input').value = ''
 			} else {
-				errorAlert('Username or Email already exist!')
+				errorAlert(result.message)
 			}
 		} else {
 			errorAlert('All data fields are required!')
+		}
+
+	})
+
+	// Search user form submit
+	document.querySelector('#search-user-form').addEventListener('submit', (event) => {
+
+		event.preventDefault()
+
+		const searchFilterBy = event.target[0][event.target[0].selectedIndex].text
+		const searchKey = event.target[1].value
+		const searchData = { filter: searchFilterBy, key: searchKey }
+		let searchResult = {};
+
+		if (searchKey) {
+			switch (searchFilterBy) {
+				case 'Username':
+					// Search device by Id
+					searchResult = users.getUserByName(searchKey)
+					searchResult.success ? renderUsersSearchResult([searchResult.user], searchData) : errorAlert(searchResult.message)
+					break;
+
+				case 'Email':
+					// Search device by model
+					searchResult = users.getUserByEmail(searchKey)
+					searchResult.success ? renderUsersSearchResult([searchResult.user], searchData) : errorAlert(searchResult.message)
+					break;
+
+				default:
+					errorAlert('Select one serch filter (Username or Email)')
+					break;
+			}
+		} else {
+			errorAlert('Empty search field!')
 		}
 
 	})

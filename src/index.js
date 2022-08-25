@@ -11,8 +11,7 @@ import { devices, renderDevicesList  } from './devices/devices.services.js'
 document.addEventListener('DOMContentLoaded', () => {
 
 	// Render users table
-	renderUsersList(users.getUsers())
+	users.getUsers().success ? renderUsersList(users.getUsers().users) : console.log(users.getUsers())
 	// Render devices table
-	renderDevicesList(devices.getDevices())
-
+	devices.getDevices().success ? renderDevicesList(devices.getDevices().devices) : console.log(devices.getDevices())
 })

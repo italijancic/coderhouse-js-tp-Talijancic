@@ -19,31 +19,61 @@ if (sessionStorage.getItem('users') !== null) {
 }
 
 // Add devices to users objects
-users.getUserByName('italijancic').addDevice(devices.getDeviceById('08:3a:f2:49:8d:7c'))
-users.getUserByName('italijancic').addDevice(devices.getDeviceById('8c:4b:14:0e:7f:58'))
-users.getUserByName('cdomenje').addDevice(devices.getDeviceById('8c:4b:14:0e:7f:58'))
-users.getUserByName('cdomenje').addDevice(devices.getDeviceById('cc:50:e3:82:f0:6a'))
-users.getUserByName('cdomenje').addDevice(devices.getDeviceById('8c:4b:14:10:a0:40'))
+users.getUserByName('italijancic').user.addDevice(devices.getDeviceById('08:3a:f2:49:8d:7c').device)
+users.getUserByName('italijancic').user.addDevice(devices.getDeviceById('8c:4b:14:0e:7f:58').device)
+users.getUserByName('cdomenje').user.addDevice(devices.getDeviceById('8c:4b:14:0e:7f:58').device)
+users.getUserByName('cdomenje').user.addDevice(devices.getDeviceById('cc:50:e3:82:f0:6a').device)
+users.getUserByName('cdomenje').user.addDevice(devices.getDeviceById('8c:4b:14:10:a0:40').device)
 
 
 const renderUsersList = (users) => {
 
-	// Render users list
-	let usersRowData = ''
+	const fragment = document.createDocumentFragment()
 
 	users.forEach((user, index) => {
-		usersRowData += `
-	<tr>
-		<th scope="row">${index + 1}</th>
-		<td>${user.username}</td>
-		<td>${user.email}</td>
-		<td>${user.password}</td>
-		<td>${user.devices.length}</td>
-		<td>${user.creationDate}</td>
-	</tr>`
+		const userRowData = document.createElement('tr')
+
+		userRowData.innerHTML = `
+		<tr>
+			<th scope="row">${index + 1}</th>
+			<td>${user.username}</td>
+			<td>${user.email}</td>
+			<td>${user.password}</td>
+			<td>${user.devices.length}</td>
+			<td>${user.creationDate}</td>
+		</tr>`
+
+		fragment.appendChild(userRowData)
 	})
 
-	document.querySelector('#users-data').innerHTML = usersRowData
+	document.querySelector('#users-data').appendChild(fragment)
+	// document.querySelector('#users-data').innerHTML = usersRowData
 }
 
-export {users, renderUsersList}
+const renderUsersSearchResult = (users, searchData) => {
+
+	const fragment = document.createDocumentFragment()
+	document.querySelector('#users-search-result').innerHTML = ''
+
+	users.forEach((user, index) => {
+		const userRowData = document.createElement('tr')
+
+		userRowData.innerHTML = `
+		<tr>
+			<th scope="row">${index + 1}</th>
+			<td>${user.username}</td>
+			<td>${user.email}</td>
+			<td>${user.password}</td>
+			<td>${user.devices.length}</td>
+			<td>${user.creationDate}</td>
+		</tr>`
+
+		fragment.appendChild(userRowData)
+	})
+
+	document.querySelector('#users-search-result').appendChild(fragment)
+	document.querySelector('#users-search-data').innerHTML = `Filter: ${searchData.filter} - Key: ${searchData.key}`
+	document.querySelector('#search-results').style.display = 'block'
+}
+
+export {users, renderUsersList, renderUsersSearchResult}

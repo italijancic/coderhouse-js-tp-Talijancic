@@ -35,25 +35,21 @@ class Device {
     }
 
     getDevices() {
-        if (this.devices.length != 0) {
-            return this.devices
-        } else {
-            console.log('Devices list is empty')
-            return undefined
-        }
+        return this.devices.length != 0 ? { success: true,  devices: this.devices } : { success: false, message: 'This user has not devices!' }
     }
 
     getDeviceById(id) {
         const foundDevice = this.devices.find((device) => {
             return device.id === id
         })
+        return foundDevice !== undefined ? { success: true, device: foundDevice } : { success: false, message: 'Incorrect or missing device ID!' }
+    }
 
-        if (foundDevice !== undefined) {
-            return foundDevice
-        } else {
-            console.error('Incorrect or missing device ID')
-            return undefined
-        }
+    getDeviceByModel(model) {
+        const foundDevices = this.devices.filter((device) => {
+            return device.model === model
+        })
+        return foundDevices.length != 0 ? { success: true, devices: foundDevices } : { success: false, message: 'Incorrect or missing device Model!'}
     }
 
     addDevice(newDevice) {
@@ -65,14 +61,15 @@ class Device {
             })
             if (foundDevice === undefined) {
                 this.devices.push(newDevice)
-                return true
+                return { success: true, message: 'New device added successfully' }
             } else {
-                console.error('Device ID already exist')
-                return false
+                return { success: false, message: 'Device ID already exist!' }
             }
         } else {
-            console.error('Missing device ID. Device ID must be unique and not null')
-            return undefined
+            return {
+                success: false,
+                message: 'Missing device ID. Device ID must be unique and not null!'
+            }
         }
     }
 }
