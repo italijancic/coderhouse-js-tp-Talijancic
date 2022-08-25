@@ -32,6 +32,7 @@ const renderUsersList = (users) => {
 
 	users.forEach((user, index) => {
 		const userRowData = document.createElement('tr')
+		document.querySelector('#users-data').innerHTML = ''
 
 		userRowData.innerHTML = `
 		<tr>

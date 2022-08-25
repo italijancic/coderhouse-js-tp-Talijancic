@@ -23,6 +23,7 @@ const renderDevicesList = (devices) => {
 
 	devices.forEach((device, index) => {
 		const deviceRowData = document.createElement('tr')
+		document.querySelector('#devices-data').innerHTML = ''
 
 		deviceRowData.innerHTML = `
 		<tr>
