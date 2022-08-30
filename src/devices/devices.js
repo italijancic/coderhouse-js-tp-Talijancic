@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 		// Validate empty fields
-		if (newDevice.model && newDevice.id && newDevice.name && newDevice.location) {
+		if (newDevice.model != 'Select device model' && newDevice.id && newDevice.name && newDevice.location) {
 
 			const result = devices.addDevice(new Device(newDevice.model, newDevice.id, newDevice.name, newDevice.location, newDevice.creationDate))
 
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				errorAlert(result.message)
 			}
 		} else {
-			errorAlert('All data fields are required!')
+			errorAlert('All data fields are required, check select device model!')
 		}
 
 	})
