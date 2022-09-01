@@ -1,6 +1,20 @@
 import { User, Users } from "./users.models.js"
 import { devices } from "../devices/devices.services.js"
 
+const fetchUsers = async () => {
+	try {
+		const data = await fetch('../src/json/users.json')
+		const devicesJson = await data.json()
+		return devicesJson
+	} catch (error) {
+		console.error(error)
+		return error
+	}
+}
+
+const { users: fetchedUsers } = await fetchUsers()
+console.log(fetchedUsers)
+
 // Create users
 const users = new Users([])
 
@@ -11,7 +25,10 @@ if (sessionStorage.getItem('users') !== null) {
 		users.addUser(new User(user.username, user.email, user.password, [], user.creationDate))
 	})
 } else {
-	console.log('[usersServices]: not load from local storage!')
+	console.debug('[users.services.js]: not load from local storage!')
+	fetchedUsers.forEach((user) => {
+		users.addUser(new User(user.username, user.email, user.password, user.devices, user.creationDate))
+	})
 	users.addUser(new User('italijancic', 'italijancic@gmail.com', 'kjs$kl&sd#jf%', [], new Date().toLocaleString()))
 	users.addUser(new User('cdomenje', 'cdomenje@dytsoluciones.com.ar', '#%678&8*3$', [], new Date().toLocaleString()))
 	users.addUser(new User('espesot', 'espesot@dytsoluciones.com.ar', 'l5k%gm7dlk#$', [], new Date().toLocaleString()))
@@ -48,7 +65,6 @@ const renderUsersList = (users) => {
 	})
 
 	document.querySelector('#users-data').appendChild(fragment)
-	// document.querySelector('#users-data').innerHTML = usersRowData
 }
 
 const renderUsersSearchResult = (users, searchData) => {

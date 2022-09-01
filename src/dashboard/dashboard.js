@@ -6,12 +6,12 @@
  * **/
 
 import { users, renderUsersList } from '../users/users.services.js'
-import { devices, renderDevicesList  } from '../devices/devices.services.js'
+import { devices, renderDevicesList } from '../devices/devices.services.js'
 
-document.addEventListener('DOMContentLoaded', () => {
 
-	// Render users table
-	users.getUsers().success ? renderUsersList(users.getUsers().users) : console.log(users.getUsers())
-	// Render devices table
-	devices.getDevices().success ? renderDevicesList(devices.getDevices().devices) : console.log(devices.getDevices())
-})
+// Render users table
+users.getUsers().success ? renderUsersList(users.getUsers().users) : console.error('Error Loading users')
+// users.getUsers().success ? renderUsersList(users.getUsers().users) : console.log(users.getUsers())
+// Render devices table
+devices.getDevices().success ? renderDevicesList(devices.getDevices().devices) : console.error('Error loading devices')
+	// devices.getDevices().success ? renderDevicesList(devices.getDevices().devices) : console.log(devices.getDevices())
