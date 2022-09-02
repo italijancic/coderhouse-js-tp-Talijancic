@@ -1,23 +1,12 @@
 import { errorAlert, successAlert } from "../SweetAlert/alerts.js"
+import { get } from '../fetch/fetch.js'
 
-
-const login = async () => {
-	try {
-		const data = await fetch('../src/json/authData.json')
-		const loginJson = await data.json()
-		return loginJson
-	} catch (error) {
-		console.error(error)
-		return error
-	}
-}
 
 const savedAuthData = JSON.parse(sessionStorage.getItem('authData'))
 
 if (savedAuthData === null || savedAuthData.logged === false) {
 
-	const authData = await login()
-	console.log(authData)
+	const authData = await get('../src/json/authData.json')
 
 	// Show password
 	document.querySelector('#showPassword').addEventListener('click', () => {
