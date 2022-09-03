@@ -6,7 +6,7 @@ const savedAuthData = JSON.parse(sessionStorage.getItem('authData'))
 
 if (savedAuthData === null || savedAuthData.logged === false) {
 
-	const authData = await get('../src/json/authData.json')
+	const authData = await get('/src/json/authData.json')
 
 	// Show password
 	document.querySelector('#showPassword').addEventListener('click', () => {
