@@ -25,8 +25,6 @@ if (savedAuthData === null || savedAuthData.logged === false) {
 			"password": event.target[1].value
 		}
 
-		console.log(loginData)
-
 		if (loginData.username && loginData.password) {
 			if (loginData.username === authData.username) {
 				if (loginData.password === authData.password) {
