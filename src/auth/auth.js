@@ -1,6 +1,10 @@
 import { errorAlert, successAlert } from "../SweetAlert/alerts.js"
 import { get } from '../fetch/fetch.js'
 
+// Default User: Login data
+// ------------
+// username: "test@test.com"
+// password: test
 
 const savedAuthData = JSON.parse(sessionStorage.getItem('authData'))
 
