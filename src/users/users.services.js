@@ -4,7 +4,6 @@ import { get } from '../fetch/fetch.js'
 
 // Fectch users from json file
 const { users: fetchedUsers } = await get('../src/json/users.json')
-console.log(fetchedUsers)
 
 // Create users
 const users = new Users([])

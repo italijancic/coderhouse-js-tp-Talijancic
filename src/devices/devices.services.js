@@ -3,7 +3,6 @@ import { get } from '../fetch/fetch.js'
 
 // Fetch devices from json file
 const { devices: devicesJson } = await get('../src/json/devices.json')
-console.log(devicesJson)
 
 // Create devices data set
 const devices = new Devices([])
