@@ -1,4 +1,8 @@
 import { Device, Devices } from "./devices.models.js"
+import { get } from '../fetch/fetch.js'
+
+// Fetch devices from json file
+const { devices: devicesJson } = await get('../src/json/devices.json')
 
 // Create devices data set
 const devices = new Devices([])
@@ -9,10 +13,10 @@ if (sessionStorage.getItem('devices') !== null) {
 		devices.addDevice(new Device(device.model, device.id, device.name, device.location, device.creationDate))
 	})
 } else {
-	devices.addDevice(new Device('T700', '08:3a:f2:49:8d:7c', 'Sensor de Temperatura', 'Oficina dyt', new Date().toLocaleString()))
-	devices.addDevice(new Device('CEM', 'cc:50:e3:82:f0:6a', 'Tablero General BT', 'AGENPIA', new Date().toLocaleString()))
-	devices.addDevice(new Device('IoTgw-MT', '8c:4b:14:10:a0:40', 'Celda MT Ensayo', 'Parque Industrial Avda', new Date().toLocaleString()))
-	devices.addDevice(new Device('IoTgw-BT', '8c:4b:14:0e:7f:58', 'TGBT', 'AGENPIA', new Date().toLocaleString()))
+	devicesJson.forEach((device) => {
+		devices.addDevice(new Device(device.model, device.id, device.name, device.location, device.creationDate))
+	})
+	console.debug('[devices.services.js]: not load from local storage!')
 	sessionStorage.setItem('devices', JSON.stringify(devices))
 }
 
