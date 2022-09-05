@@ -36,7 +36,7 @@ if (savedAuthData === null || savedAuthData.logged === false) {
 					authData.logged = true
 					sessionStorage.setItem('authData', JSON.stringify(authData))
 					setTimeout(() => {
-						window.location.replace('../pages/dashboard.html')
+						window.location.replace('./pages/dashboard.html')
 					}, 2000)
 				} else {
 					errorAlert('Incorrect or missing password')
