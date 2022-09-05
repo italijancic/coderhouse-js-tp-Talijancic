@@ -49,5 +49,5 @@ if (savedAuthData === null || savedAuthData.logged === false) {
 		}
 	})
 } else {
-	window.location.replace('../../pages/dashboard.html')
+	window.location.replace('./pages/dashboard.html')
 }
