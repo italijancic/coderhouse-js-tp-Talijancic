@@ -1,0 +1,143 @@
+{
+	"users": [
+		{
+			"username": "italijancic",
+			"email": "italijancic@gmail.com",
+			"password": "kjs$kl&sd#jf%",
+			"devices": [
+				{
+					"model": "T700",
+					"id": "08:3a:f2:49:8d:7c",
+					"name": "Sensor de Temperatura",
+					"location": "Oficina dyt",
+					"creationDate": "9/1/2022, 5:13:50 PM"
+				},
+				{
+					"model": "CEM",
+					"id": "cc:50:e3:82:f0:6a",
+					"name": "Tablero General BT",
+					"location": "AGENPIA",
+					"creationDate": "9/1/2022, 5:13:50 PM"
+				}
+			],
+			"creationDate": "24/4/2019, 5:13:50 PM"
+		},
+		{
+			"username": "cdomenje",
+			"email": "cdomenje@dytsoluciones.com.ar",
+			"password": "#%678&8*3$",
+			"devices": [
+				{
+					"model": "CEM",
+					"id": "cc:50:e3:82:f0:6a",
+					"name": "Tablero General BT",
+					"location": "AGENPIA",
+					"creationDate": "9/1/2022, 5:13:50 PM"
+				},
+				{
+					"model": "IoTgw-MT",
+					"id": "8c:4b:14:10:a0:40",
+					"name": "Celda MT Ensayo",
+					"location": "Parque Industrial Avda",
+					"creationDate": "9/1/2022, 5:13:50 PM"
+				},
+				{
+					"model": "IoTgw-BT",
+					"id": "8c:4b:14:0e:7f:58",
+					"name": "TGBT",
+					"location": "AGENPIA",
+					"creationDate": "9/1/2022, 5:13:50 PM"
+				}
+			],
+			"creationDate": "25/6/2022, 8:20:00 PM"
+		},
+		{
+			"username": "espesot",
+			"email": "espesot@dytsoluciones.com.ar",
+			"password": "l5k%gm7dlk#$",
+			"devices": [
+				{
+					"model": "IoTgw-BT",
+					"id": "8c:4b:14:02:24:24",
+					"name": "TGBT",
+					"location": "A.G.D.S.A",
+					"creationDate": "29/3/2021, 2:14:00 PM"
+				},
+				{
+					"model": "CEM",
+					"id": "cc:50:e3:88:2f:66",
+					"name": "Tablero General BT",
+					"location": "AP S.A",
+					"creationDate": "9/4/2019, 7:18:22 PM"
+				}
+			],
+			"creationDate": "6/12/2019, 12:00:25 PM"
+		},
+		{
+			"username": "jnardelli",
+			"email": "jnardelli@outlook.com.ar",
+			"password": "lkasdjfklsd",
+			"devices": [
+				{
+					"model": "T700",
+					"id": "08:3a:f2:49:82:74",
+					"name": "Cámara CArnicería",
+					"location": "UAA - Super Centro",
+					"creationDate": "16/9/2021, 3:13:50 PM"
+				},
+				{
+					"model": "T700",
+					"id": "08:3a:f2:49:8d:7c",
+					"name": "Sensor de Temperatura",
+					"location": "Oficina dyt",
+					"creationDate": "19/1/2022, 5:13:50 PM"
+				},
+				{
+					"model": "CEM",
+					"id": "cc:50:e3:82:f0:6a",
+					"name": "Tablero General BT",
+					"location": "AGENPIA",
+					"creationDate": "9/4/2021, 5:13:50 PM"
+				},
+				{
+					"model": "IoTgw-BT",
+					"id": "8c:4b:14:0e:7f:58",
+					"name": "TGBT",
+					"location": "AGENPIA",
+					"creationDate": "11/3/2022, 5:13:50 PM"
+				}
+
+			],
+			"creationDate": "24/1/2022, 2:11:19 PM"
+		},
+		{
+			"username": "llebus",
+			"email": "llebus@dytsoluciones.com.ar",
+			"password": "lkasdfjakl",
+			"devices": [
+				{
+					"model": "CEM",
+					"id": "cc:50:e3:88:2f:66",
+					"name": "Tablero General BT",
+					"location": "AP S.A",
+					"creationDate": "10/8/2020, 7:18:22 PM"
+				},
+				{
+					"model": "T700",
+					"id": "08:3a:f2:49:82:74",
+					"name": "Cámara CArnicería",
+					"location": "UAA - Super Centro",
+					"creationDate": "16/9/2021, 3:13:50 PM"
+				},
+				{
+					"model": "CEM",
+					"id": "cc:50:e3:88:2f:66",
+					"name": "Tablero General BT",
+					"location": "AP S.A",
+					"creationDate": "10/8/2020, 7:18:22 PM"
+				}
+			],
+			"creationDate": "24/1/2022, 2:11:19 PM"
+		}
+	]
+}

@@ -1,0 +1,81 @@
+{
+	"devices": [
+		{
+			"model": "T700",
+			"id": "08:3a:f2:49:8d:7c",
+			"name": "Sensor de Temperatura",
+			"location": "Oficina dyt",
+			"creationDate": "19/1/2022, 5:13:50 PM"
+		},
+		{
+			"model": "CEM",
+			"id": "cc:50:e3:82:f0:6a",
+			"name": "Tablero General BT",
+			"location": "AGENPIA",
+			"creationDate": "9/4/2021, 5:13:50 PM"
+		},
+		{
+			"model": "T700",
+			"id": "08:3a:f2:49:82:74",
+			"name": "Cámara CArnicería",
+			"location": "UAA - Super Centro",
+			"creationDate": "16/9/2021, 3:13:50 PM"
+		},
+		{
+			"model": "IoTgw-MT",
+			"id": "8c:4b:14:10:a0:40",
+			"name": "Celda MT Ensayo",
+			"location": "Parque Industrial Avda",
+			"creationDate": "8/3/2019, 5:13:50 PM"
+		},
+		{
+			"model": "IoTgw-MT",
+			"id": "8c:4b:14:10:a0:42",
+			"name": "Celda MT Entrada Principal",
+			"location": "Parque Industrial Avda",
+			"creationDate": "13/10/2019, 2:13:54 PM"
+		},
+		{
+			"model": "CEM",
+			"id": "cc:50:e3:32:36:f5",
+			"name": "TGBT - TRAFO 1",
+			"location": "HCR",
+			"creationDate": "10/8/2020, 10:18:22 AM"
+		},
+		{
+			"model": "CEM",
+			"id": "cc:52:e6:ee:32:f5",
+			"name": "TGBT - TRAFO 2",
+			"location": "HCR",
+			"creationDate": "13/6/2019, 11:21:22 AM"
+		},
+		{
+			"model": "IoTgw-BT",
+			"id": "8c:4b:14:0e:7f:58",
+			"name": "TGBT",
+			"location": "AGENPIA",
+			"creationDate": "11/3/2022, 5:13:50 PM"
+		},
+		{
+			"model": "CEM",
+			"id": "24:50:e3:88:2f:66",
+			"name": "Tablero General BT",
+			"location": "AP S.A",
+			"creationDate": "7/10/2019, 7:18:22 PM"
+		},
+		{
+			"model": "IoTgw-BT",
+			"id": "8c:4b:14:02:24:24",
+			"name": "TGBT",
+			"location": "A.G.D.S.A",
+			"creationDate": "29/3/2021, 2:14:00 PM"
+		},
+		{
+			"model": "CEM",
+			"id": "cc:50:e3:88:2f:66",
+			"name": "Tablero General BT",
+			"location": "AP S.A",
+			"creationDate": "10/8/2020, 7:18:22 PM"
+		}
+	]
+}
